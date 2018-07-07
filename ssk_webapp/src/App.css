@@ -6,7 +6,13 @@
 
 .App__Aside {
   width: 50%;
-  background-color: #66DAC7;
+  background-color: #fff;
+  background: url( "BeFunky-collage.jpg");
+  background-position: relative;
+  background-size: 100% auto;
+  object-fit: contain;
+
+
 }
 
 .App__Form {
