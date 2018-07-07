@@ -104,6 +104,8 @@ class Unavail(Resource):
         db.session.add(new_unavail)
         db.session.commit()
 
+        return "Add {} - {}".format(args.startdate, args.enddate)
+
 
 
 

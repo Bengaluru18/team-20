@@ -12,8 +12,8 @@ class specialist(db.Model):
     def __repr__(self):
         return self.sname
 
-class unavailibility(db.Model):
-    __table__ = db.Model.metadata.tables['unavailibility']
+class unavailability(db.Model):
+    __table__ = db.Model.metadata.tables['unavailability']
     def __repr__(self):
         return self.sid
 
