@@ -2,6 +2,10 @@
   "name": "ssk_webapp",
   "version": "0.1.0",
   "private": true,
+  "engine": {
+    "npm": "6.1.0",
+    "node": "10.6.0"
+  },
   "dependencies": {
     "collage": "^0.1.1",
     "react": "^16.4.1",
