@@ -1,7 +1,7 @@
 # team-20
-Dhruv Tyagi
-Shifali Shetty
-Anirudh Belathur
-Keerthana N
-Aravind B S
-Purusharath Arora
+Dhruv Tyagi <br/>
+Shifali Shetty <br/>
+Anirudh Belathur <br/>
+Keerthana N <br/>
+Aravind B S <br/>
+Purusharath Arora <br/>
