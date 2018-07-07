@@ -17,4 +17,8 @@ class unavailability(db.Model):
     def __repr__(self):
         return self.sid
 
+class unavailability(db.Model):
+    __table__ = db.Model.metadata.tables['patient']
+    def __repr__(self):
+        return self.pid
 

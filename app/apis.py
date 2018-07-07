@@ -1,6 +1,6 @@
 from app import app, api, db
 from flask_restful import Resource, reqparse
-from .models import appointment, specialist, unavailability
+from .models import appointment, specialist, unavailability, patient
 import json
 #Profiles.query.filter_by(username= current_user.username).first()
 colors = {"approved": "green", "done": "grey", "pending": "yellow"}
@@ -106,7 +106,68 @@ class Unavail(Resource):
 
         return "Add {} - {}".format(args.startdate, args.enddate)
 
+class Patient (Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+
+        req_args = ['pid', 'pname', 'dob', 'parent_name', 'phno', 'address' ]
+
+        for r in req_args:
+            parser.add_argument(r)
+        args = parser.parse_args()
+        print (args)
+        query = patient.query
+        if args.timing:
+            query = patient.query.filter_by(timing=args.pid)
+
+        if args.pid:
+            query = patient.query.filter_by(pid=args.pname)
+
+        if args.sid:
+            query = patient.query.filter_by(sid=args.dob)
+
+        if args.timing:
+            query = patient.query.filter_by(timing=args.parent_name)
+
+        if args.pid:
+            query = patient.query.filter_by(pid=args.phno)
+
+        if args.sid:
+            query = patient.query.filter_by(sid=args.address)
+
+        patients = query.all()
+        data = []
+        for p in patients:
+            data.append(p.__dict__)
+
+        response = {"patients": data}
+        return response["patients"]
+
+    def post(self):
+        parser = reqparse.RequestParser()
+
+        req_args = ['pid', 'pname', 'dob', 'parent_name', 'phno', 'address' ]
+
+        for r in req_args:
+            parser.add_argument(r)
+        args = parser.parse_args()
+        print (args)
+        new_patient = patient.query.filter_by(pid= args.pid).first()
+
+        if new_patient is not None:
+            new_patient = patient(pid = args.pid, pname = args.pname, phno = args.phno, address= args.address, dob=args.dob, parent_name= args.dob)
+            db.session.add(new_patient)
+            db.session.commit()
+            return "added {}".format(args.pname)
+
+        
+
+
+        
+
 
 
 
 api.add_resource(Appointment, '/api/event')
+api.add_resource(Unavail, '/api/unavail')
+api.add_resource()
