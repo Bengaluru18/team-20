@@ -12,13 +12,14 @@ class specialist(db.Model):
     def __repr__(self):
         return self.sname
 
-class unavailability(db.Model):
-    __table__ = db.Model.metadata.tables['unavailability']
+class unavail(db.Model):
+    __table__ = db.Model.metadata.tables['unavail']
     def __repr__(self):
         return self.sid
 
-class unavailability(db.Model):
+class patient(db.Model):
     __table__ = db.Model.metadata.tables['patient']
-    def __repr__(self):
-        return self.pid
+    
+    def __json__(self):
+        return ['pid', 'pname', 'dob', 'parent_name', 'phno', 'address', 'comment' ]
 
